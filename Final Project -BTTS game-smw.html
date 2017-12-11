@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>Final Project Battleship Game</TITLE>
+<META charset = "UTF-8"/>
+<META name = "author" content = "Shay Walker"/>
+<STYLE>
+td {
+	width: 30px;
+	height: 30px;
+}
+</STYLE>
+<SCRIPT type = "text/javascript">
+var theGrid=[];
+var theCompGrid=[];
+var shipLengths = [2,3,3,4,5];
+var gridHeight=10; 
+var gridWidth=gridHeight;
+var gameStage=0;
+var userNumberHits=0;
+var compNumberHits=0;
+//Generates the physical grid onto the page for user visual purposes.
+function userBoard (){
+var boardDiv=document.getElementById("board1");
+var tableHTML="<TABLE border=2>";
+	//Generates the rows of the grid. 
+	for (var row=0;row<gridWidth;row++){
+		tableHTML += "<TR>";
+	//Generates the columns of the grid.
+	for (var col=0;col<gridHeight;col++){
+		tableHTML += "<TD id=\"r"+row+"c"+col+"\" width=10 height=10>"+theGrid[row][col]+"</TD>";
+	}
+		tableHTML += "</TR>";
+	}
+	tableHTML += "</TABLE>";
+	boardDiv.innerHTML=tableHTML; 
+}
+function userBoardSeed (){ 
+	for (var row=0;row<gridWidth;row++){
+	arr=[]
+		for (var col=0;col<gridHeight;col++){
+		arr [col]=" ";
+		}theGrid [row]=arr;
+	}
+}
+function userShipPlacement (){
+	var acStart= document.getElementById("aircraftCarrier").value;
+	var acDirectionId= document.getElementById("airCraft");
+	var acDirection= acDirectionId.options[acDirectionId.selectedIndex].value;
+	// Takes he first character, converts it to its ASCII value, and subtracs 65 so 'A' is= 0 and 'B' is= 1 (etc). 
+	var acStartRow= acStart.toUpperCase().charCodeAt(0)-65;
+	var acStartColumn= Number(acStart.substring (1));
+		if (acDirection =="H"){
+			for (var counter= 0; counter<5; counter++)
+			// A is for Aircraft Carrier.
+			if (theGrid[acStartRow][acStartColumn+counter]==" "){
+			theGrid[acStartRow][acStartColumn+counter]="A";
+			}else {
+			alert("Your Aircraft Carrier overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+		}
+			else{
+			for (var counter= 0; counter<5; counter++)
+			if (theGrid[acStartRow+counter][acStartColumn]==" ")
+			theGrid [acStartRow+counter][acStartColumn]= "A";
+			else{
+			alert("Your Aircraft Carrier overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+			}
+var bsStart= document.getElementById("battleship").value;
+var bsDirectionId= document.getElementById("battle");
+var bsDirection= bsDirectionId.options[bsDirectionId.selectedIndex].value;
+// Takes he first character, converts it to its ASCII value, and subtracs 65 so 'A' is= 0 and 'B' is= 1 (etc). 
+var bsStartRow= bsStart.toUpperCase().charCodeAt(0)-65;
+var bsStartColumn= Number(bsStart.substring (1));
+	if (bsDirection =="H"){
+		for (var counter= 0; counter<4; counter++)
+		// B is for Battleship.
+		if (theGrid[bsStartRow][bsStartColumn+counter]==" "){
+			theGrid[bsStartRow][bsStartColumn+counter]="B";
+		}	else{
+			alert("Your Battleship overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+	}
+			else{
+			for (var counter= 0; counter<4; counter++)
+			if (theGrid[bsStartRow+counter][bsStartColumn]==" ")
+			theGrid [bsStartRow+counter][bsStartColumn]= "B";
+			else{
+			alert("Your Battleship overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+			}
+var subStart= document.getElementById("submarine").value;
+var subDirectionId= document.getElementById("sub");
+var subDirection= subDirectionId.options[subDirectionId.selectedIndex].value;
+// Takes the first character, converts it to its ASCII value, and subtracs 65 so 'A' is= 0 and 'B' is= 1 (etc). 
+var subStartRow= subStart.toUpperCase().charCodeAt(0)-65;
+var subStartColumn= Number(subStart.substring (1));
+	if (subDirection =="H"){
+		for (var counter= 0; counter<4; counter++)
+		// S is for Submarine.
+		if (theGrid[subStartRow][subStartColumn+counter]==" "){
+			theGrid[subStartRow][subStartColumn+counter]="S";
+			}else{
+			alert("Your Submarine overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+		}
+			else{
+			for (var counter= 0; counter<4; counter++)
+			if (theGrid[subStartRow+counter][subStartColumn]==" ")
+			theGrid [subStartRow+counter][subStartColumn]= "S";
+			else{
+			alert("Your Submarine overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+			}
+var crStart= document.getElementById("cruiser").value;
+var crDirectionId= document.getElementById("cruise");
+var crDirection= crDirectionId.options[crDirectionId.selectedIndex].value;
+// Takes the first character, converts it to its ASCII value, and subtracs 65 so 'A' is= 0 and 'B' is= 1 (etc). 
+var crStartRow= crStart.toUpperCase().charCodeAt(0)-65;
+var crStartColumn= Number(crStart.substring (1));
+	if (crDirection =="H"){
+		for (var counter= 0; counter<3; counter++)
+		// C is for Cruiser.
+		if (theGrid[crStartRow][crStartColumn+counter]==" "){
+			theGrid[crStartRow][crStartColumn+counter]="C";
+			}else{
+			alert("Your Cruiser overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+		}
+			else{
+			for (var counter= 0; counter<3; counter++)
+			if (theGrid[crStartRow+counter][crStartColumn]==" ")
+			theGrid [crStartRow+counter][crStartColumn]= "C";
+			else{
+			alert("Your Crusier overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+			}
+var dStart= document.getElementById("destroyer").value;
+var dDirectionId= document.getElementById("destroy");
+var dDirection= dDirectionId.options[dDirectionId.selectedIndex].value;
+// Takes he first character, converts it to its ASCII value, and subtracs 65 so 'A' is= 0 and 'B' is= 1 (etc). 
+var dStartRow= dStart.toUpperCase().charCodeAt(0)-65;
+var dStartColumn= Number(dStart.substring (1));
+	if (dDirection =="H"){
+		for (var counter= 0; counter<2; counter++)
+		// D is for Destroyer.
+		if (theGrid[dStartRow][dStartColumn+counter]==" "){
+			theGrid[dStartRow][dStartColumn+counter]="D";
+			}else{
+			alert("Your Destroyer overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+		}
+			else{
+			for (var counter= 0; counter<2; counter++)
+			if (theGrid[dStartRow+counter][dStartColumn]==" ")
+			theGrid [dStartRow+counter][dStartColumn]= "D";
+			else{
+			alert("Your Destroyer overlaps another ship. Please adjust your placement and try again.");
+			//Reset user board to all blank, and stop placing ships.
+			userBoardSeed ();
+			return userBoard ();
+			}
+			}
+userBoard ()
+}
+function computerBoard (){
+var boardDiv=document.getElementById("board2");
+var tableHTML="<TABLE border=2>";
+	//Generates the rows of the grid. 
+	for (var row=0;row<gridWidth;row++){
+		tableHTML += "<TR>";
+	//Generates the columns of the grid.
+	for (var col=0;col<gridHeight;col++){
+		tableHTML += "<TD id=\"r"+row+"c"+col+"\" width=10 height=10>"+theCompGrid[row][col]+"</TD>";
+	}
+		tableHTML += "</TR>";
+	}
+	tableHTML += "</TABLE>";
+	boardDiv.innerHTML=tableHTML; 
+}
+function computerBoardSeed (){
+shipLengths = [2,3,3,4,5];
+	for (var row=0;row<gridWidth;row++){
+	arr=[]
+		for (var col=0;col<gridHeight;col++){
+		arr [col]=" ";
+		}theCompGrid [row]=arr;
+	}		for (var ship=0;ship<shipLengths.length;ship++){
+				do {
+				var thisShipGood= true;
+			var randomDirection=Math.random(); 
+			var randomDirection=(randomDirection*2);
+			var randomDirection=Math.floor(randomDirection);
+			//
+			var randomRow=Math.random(); 
+			var randomRow=(randomRow*10);
+			var randomRow=Math.floor(randomRow);
+			//
+			var randomColumn=Math.random(); 
+			var randomColumn=(randomColumn*10);
+			var randomColumn=Math.floor(randomColumn);
+				//
+				while (randomDirection==1 && randomRow>10-shipLengths[ship]){
+				//
+				var randomRow=Math.random(); 
+				var randomRow=(randomRow*10);
+				var randomRow=Math.floor(randomRow);
+				}
+				//
+				while(randomDirection==0 && randomColumn>10-shipLengths[ship]){
+				var randomColumn=Math.random(); 
+				var randomColumn=(randomColumn*10);
+				var randomColumn=Math.floor(randomColumn);
+				}
+				if (randomDirection =="0"){
+							for (var counter= 0; counter< shipLengths[ship]; counter++)
+							// 
+							if (theCompGrid[randomRow][randomColumn+counter]=="S") thisShipGood=false;
+				}else {
+				for (var counter= 0; counter< shipLengths[ship]; counter++)
+							// 
+							if (theCompGrid[randomRow+counter][randomColumn]=="S") thisShipGood=false;
+				}
+				} while(!thisShipGood);
+						if (randomDirection =="0"){
+							for (var counter= 0; counter< shipLengths[ship]; counter++)
+							// 
+							theCompGrid[randomRow][randomColumn+counter]="S";
+						}
+							else{
+								for (var counter= 0; counter< shipLengths[ship]; counter++)
+								theCompGrid[randomRow+counter][randomColumn]= "S";
+							}
+			
+}
+}
+function userFire () {
+var guess= document.getElementById("userGuess").value;
+var row= guess.toUpperCase().charCodeAt(0)-65;
+var col= Number(guess.substring (1));
+		// check if a location has already been guessed
+		if (theCompGrid[row][col].indexOf("*")>= 0) {
+		alert("You have already guessed this location.");
+		return;
+		} 	
+			//Checks to see if the guess hits a ship or is a miss. this only happens if the user has not already guessed this cell. 
+			if (theCompGrid[row][col] == " ") {
+			alert("Miss!");
+			}
+				else {
+				alert("HIT!");
+				userNumberHits++;
+				}
+					theCompGrid[row][col]+= "*";
+					compFire();
+					userBoard();
+					compBoard();
+					
+}
+function compFire () {
+do {
+var compGuessRow=[Math.floor(Math.random() *theGrid.length)];
+var compGuessColumn=[Math.floor(Math.random() *theGrid.length)];
+		} while(theGrid[compGuessRow][compGuessColumn].indexOf("*")>= 0);
+			 //Checks to see if the guess hits a ship or is a miss. this only happens if the user has not already guessed this cell. 
+			if (theGrid[compGuessRow][compGuessColumn] == " ") {
+			alert("Miss!");
+			}
+				else {
+				alert("Computer has hit a ship!");
+				compNumberHits++;
+				}
+					theGrid[compGuessRow][compGuessColumn] += "*";
+						if (userNumberHits==17){
+						alert ("You Won!")
+						} 
+							if(compNumberHits==17){
+							alert ("Computer Won!")
+							}
+						
+}
+
+</SCRIPT>
+</HEAD>
+<BODY onLoad="userBoardSeed (); userBoard (); computerBoardSeed (); computerBoard (); ">
+<DIV id="board1" style="display:block;"></DIV>
+<DIV id="board2" style="display:none;"></DIV>
+<BR></BR>
+<INPUT type="text" id="aircraftCarrier" value="0"/>
+<SELECT id="airCraft">
+<OPTION value="H">Horizontal</OPTION> 
+<OPTION value="V">Vertical</OPTION> 
+</SELECT>
+<INPUT type="text" id="battleship" value="0"/>
+<SELECT id="battle">
+<OPTION value="H">Horizontal</OPTION> 
+<OPTION value="V">Vertical</OPTION> 
+</SELECT>
+<INPUT type="text" id="submarine" value="0"/>
+<SELECT id="sub">
+<OPTION value="H">Horizontal</OPTION> 
+<OPTION value="V">Vertical</OPTION> 
+</SELECT>
+<INPUT type="text" id="cruiser" value="0"/>
+<SELECT id="cruise">
+<OPTION value="H">Horizontal</OPTION> 
+<OPTION value="V">Vertical</OPTION> 
+</SELECT>
+<INPUT type="text" id="destroyer" value="0"/>
+<SELECT id="destroy">
+<OPTION value="H">Horizontal</OPTION> 
+<OPTION value="V">Vertical</OPTION> 
+</SELECT>
+<BUTTON onClick = "userShipPlacement();">Place Ships</BUTTON><BR/>
+<INPUT type="text" id="userGuess" value="0"/><BUTTON onClick = "userFire();">Fire</BUTTON><BR/>
+</BODY>
+</HTML>
