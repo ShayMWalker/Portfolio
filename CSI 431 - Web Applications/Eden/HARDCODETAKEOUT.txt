@@ -1,0 +1,119 @@
+<OPTION>
+Egg, sausage, biscuit sandwich
+</OPTION>
+
+<OPTION>
+Egg, sausage, cheese biscuit sandwich
+</OPTION>
+
+<OPTION>
+Fruit Bowl
+</OPTION>
+
+<OPTION>
+Fruit Yogurt Blend
+</OPTION>
+
+<OPTION>
+1/2 Summer salad
+</OPTION>
+
+<OPTION>
+Cheeseburger
+</OPTION>
+
+<OPTION>
+Fish Sandwich
+</OPTION>
+
+<OPTION>
+Frankfurter
+</OPTION>
+
+<OPTION>
+Grilled Chicken Wrap
+</OPTION>
+
+<OPTION>
+Hamburger
+</OPTION>
+
+<OPTION>
+Italian sausage w/ peppers & onions
+</OPTION>
+
+<OPTION>
+Buffalo Wings 6 Piece
+</OPTION>
+
+<OPTION>
+Buffalo Wings 9 Piece
+</OPTION>
+
+<OPTION>
+Buffalo Wings 12 Piece
+</OPTION>
+
+<OPTION>
+Deep Dish Pizza
+</OPTION>
+
+<OPTION>
+Boiled Cabbage
+</OPTION>
+
+<OPTION>
+Caesar salad
+</OPTION>
+
+<OPTION>
+Curly Fries
+</OPTION>
+
+<OPTION>
+Garden salad
+</OPTION>
+
+<OPTION>
+Steamed Mixed Vegeables
+</OPTION>
+
+<OPTION>
+Sweet Potato Fries
+</OPTION>
+
+<OPTION>
+White Rice
+</OPTION>
+
+<OPTION>
+Bottled Water
+</OPTION>
+
+<OPTION>
+Coffee
+</OPTION>
+
+<OPTION>
+Fruit Juice
+</OPTION>
+
+<OPTION>
+Hot Chocolate
+</OPTION>
+
+<OPTION>
+Regular Soda
+</OPTION>
+
+<OPTION>
+Specialty Soda
+</OPTION>
+
+<OPTION>
+Tea
+</OPTION>
+
+<OPTION>
+White Hot Chocolate
+</OPTION>

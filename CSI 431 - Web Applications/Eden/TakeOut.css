@@ -1,0 +1,206 @@
+	.backgroundimage{
+	background: url("https://lifeandthyme.com/wp-content/uploads/2015/02/mason-jar-cafe-20.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center center;	
+	background-color:Black;
+	}
+	.sidenav {
+		height: 100%;
+		width:15%;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #0b0d0f;
+		overflow-x: hidden;
+		padding-top: 0px;
+	}
+	.sidenav a {
+		padding: 6px 8px 6px 16px;
+		text-decoration: None;
+		font-size: 25px;
+		color: White;
+		display: block;
+	}
+	.sidenav H1 {
+	padding: 6px 8px 6px 16px;
+	text-decoration: None;
+	font-size: 25px;
+	color: White;
+	display: block;
+	}	
+	.sidenav a:hover {
+		color: #32CD32;
+	}
+
+	.sidenav img{
+		border: none;
+		display: block;
+		margin: 0 auto;
+		hight: 200px;
+		width: 200px;
+	}
+	Menues{
+		position:relative;
+		left:100;
+		top:100;
+		background-color:Red;
+	}
+	searchArea{
+		position:absolute;
+		background-color:yellow;
+		hight:50px;
+		width:400px;
+	}
+	.searchArea INPUT{
+		position:fixed;
+		right:2%;
+		top:2%;
+		height:30px;
+		width:300px;
+	}
+	.searchArea BUTTON{
+		position:fixed;
+		right:1%;
+		top:2%;
+		Height:30px;
+		background-color:#32CD32;
+		padding:0;
+	}
+	
+	.breakfast {
+		position:absolute;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width:25%;
+		left:17%;
+		top:10%;
+		background-color:rgba(1,1,1,0.5);
+		color:white;
+	}
+	.lunch {
+		position:absolute;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 25%;
+		left:17%;
+		top:32%;
+		background-color:rgba(1,1,1,0.5);
+		color:white;
+	}
+	.dinner {
+		position:absolute;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 25%;
+		left:17%;
+		top:65.5%;
+		bottom:20px;
+		background-color:rgba(1,1,1,0.5);
+		color:white;
+	}
+	.Sides {
+		position:absolute;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 25%;
+		left:17%;
+		top:87.5%;
+		bottom:20px;
+		background-color:rgba(1,1,1,0.5);
+		color:white;
+	}
+	.Drinks {
+		position:absolute;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 25%;
+		left:17%;
+		top:125%;
+		bottom:20px;
+		background-color:rgba(1,1,1,0.5);
+		color:white;
+	}
+	th{
+		font-size:30;
+		font-family:helvetica;
+	}
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color:#0b0d0f;
+	}
+	.orderForum{
+	position:absolute;
+	top:25%;
+	left:45%;
+	height:500px;
+	width:1000px;
+	background-color:rgba(1,1,1,0.5);
+	}
+	.selectMenuItem{
+		position:Absolute;
+		left:25%;
+		top:30%;
+	}
+	.inputQyt{
+		position:absolute;
+		left:55%;
+		top:30%;
+	}
+	.inputQyt INPUT{
+		width:30px;
+	}
+	.addButton{
+		position:absolute;
+		left:62%;
+		top:30%;
+	}
+	.addButton BUTTON{
+		background-color:#32CD32;
+	}
+	.name{
+		position:absolute;
+		top:70%;
+		left:10%;
+	}
+	.number{
+		position:absolute;
+		top:70%;
+		left:30%;
+	}
+	.xDate{
+		position:absolute;
+		top:70%;
+		left:50%;
+	}
+	.CCV{
+		position:absolute;
+		top:70%;
+		left:70%;
+	}
+	.type{
+		position:absolute;
+		top:80%;
+		left:32%;
+	}
+	.submitButton{
+		position:absolute;
+		top:80%;
+		left:50%;
+	}
+	.submitButton BUTTON{
+		background-color:#32CD32;
+	}
+	.orderInput{
+		position:absolute;
+		top:10%;
+		left:25%;
+		height:50%;
+		width:75%;
+	}
