@@ -1,1 +1,2 @@
 ## Writing Samples from CSI 121 - Introduction to Computer Science and Information Systems
+An introductory course on the business use of information systems and programming. The course explores the field of computer science and information systems. Basic programming skills and concepts are introduced and practiced. Ethical issues surrounding technology and the use of computers and information are discussed. 
